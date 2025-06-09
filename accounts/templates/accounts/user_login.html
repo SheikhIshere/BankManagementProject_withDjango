@@ -1,16 +1,75 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div
+  class="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 to-blue-50"
+>
+  <div
+    class="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl border border-blue-100"
+  >
+    <h2 class="text-3xl font-bold text-center text-blue-700 mb-8">
+      Welcome Back
+    </h2>
 
-{% block content %}
-<div class="flex items-center justify-center min-h-screen bg-blue-50">
-  <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-md">
-    <h2 class="text-2xl font-semibold text-center text-blue-600 mb-6">Login</h2>
-    <form method="post" class="space-y-4">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-        Login
+    <form method="post" class="space-y-6">
+      {% csrf_token %} {% if form.non_field_errors %}
+      <div class="text-red-600 text-sm mb-2">{{ form.non_field_errors }}</div>
+      {% endif %} {% for field in form %}
+      <div>
+        <label
+          for="{{ field.id_for_label }}"
+          class="block text-sm font-medium text-gray-700 mb-1"
+        >
+          {{ field.label }}
+        </label>
+
+        {% if field.field.widget.input_type == "password" %}
+        <div class="relative">
+          {{ field }}
+          <button
+            type="button"
+            onclick="togglePassword(this)"
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg focus:outline-none"
+          >
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+
+        {% else %} {{ field }} {% endif %} {% if field.errors %}
+        <p class="text-red-500 text-xs mt-1">{{ field.errors|striptags }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <button
+        type="submit"
+        class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-200"
+      >
+        Log In
       </button>
     </form>
+
+    <p class="mt-6 text-center text-sm text-gray-500">
+      Don't have an account?
+      <a href="{% url 'register' %}" class="text-blue-600 hover:underline"
+        >Sign up</a
+      >
+    </p>
   </div>
 </div>
+
+<script>
+  function togglePassword(btn) {
+    const input = btn.previousElementSibling;
+    const icon = btn.querySelector("i");
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      input.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+</script>
+
 {% endblock content %}

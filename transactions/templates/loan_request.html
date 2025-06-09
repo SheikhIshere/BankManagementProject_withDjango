@@ -1,0 +1,28 @@
+<!-- loan_request.html -->
+{% extends 'base.html' %}
+
+{% block title %}Loan Request{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Request a Loan</h2>
+    
+    <form method="post" class="space-y-6">
+        {% csrf_token %}
+        
+        <!-- Loan Amount -->
+        <div class="space-y-2">
+            <label for="amount" class="block text-lg font-medium">Loan Amount</label>
+            <input type="number" name="amount" id="amount" class="w-full border border-gray-300 p-3 rounded-md" placeholder="Enter the amount you want to borrow" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-500 transition duration-200">
+            Request Loan
+        </button>
+    </form>
+    <div class="bg-blue-400 px-2 py-2 w-20 text-center rounded-2xl shadow-sm hover:bg-blue-300 text-white mt-5">
+        <a href="{% url 'loan_list' %}">Loan list</a>
+    </div>
+</div>
+{% endblock %}

@@ -3,7 +3,7 @@ from .constans import GENDER_TYPE, ACCOUNT_TYPE
 from django import forms
 from django.contrib.auth.models import User
 from .models import UserBankAccout, UserAddress
-
+from django.contrib.auth.forms import AuthenticationForm
 
 class UserRegistrationForm(UserCreationForm):    
     birth_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
@@ -138,3 +138,11 @@ class UserUpdateForm(forms.ModelForm):
         user_account.save()
 
         return user
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs.update({
+                'class': 'w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
+            })

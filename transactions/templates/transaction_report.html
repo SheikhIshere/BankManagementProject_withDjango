@@ -1,0 +1,45 @@
+<!-- transaction_report.html -->
+{% extends 'base.html' %}
+
+{% block title %}Transaction Report{% endblock %}
+
+{% block content %}
+<div class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold mb-6">Transaction Report</h2>
+
+    <!-- Date Range Filter -->
+    <form method="get" class="mb-6 flex space-x-4">
+        <input type="date" name="start_date" class="border p-3 rounded-md" placeholder="Start Date" value="{{ request.GET.start_date }}">
+        <input type="date" name="end_date" class="border p-3 rounded-md" placeholder="End Date" value="{{ request.GET.end_date }}">
+        <button type="submit" class="bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-500 transition duration-200">Filter</button>
+    </form>
+
+    <!-- Transaction Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg">
+            <thead class="bg-blue-600 text-white">
+                <tr>
+                    <th class="px-4 py-3">Date</th>
+                    <th class="px-4 py-3">Amount</th>
+                    <th class="px-4 py-3">Type</th>
+                    <th class="px-4 py-3">Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in object_list %}
+                <tr class="border-b">
+                    <td class="px-4 py-3">{{ transaction.timestamp }}</td>
+                    <td class="px-4 py-3">${{ transaction.amount }}</td>
+                    <td class="px-4 py-3">{{ transaction.get_transaction_type_display }}</td>
+                    <td class="px-4 py-3">${{ transaction.account.balance }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="px-4 py-3 text-center text-gray-500">No transactions found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

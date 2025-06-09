@@ -9,7 +9,7 @@
   <span class="text-gray-800">
     {% if user.account %}{{ user.account.account_no }}{% else %}N/A{% endif %}
   </span>
-
+  
   <form method="post" class="space-y-6">
     {% csrf_token %}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

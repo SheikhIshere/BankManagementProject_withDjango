@@ -1,0 +1,32 @@
+<!-- transaction_form.html -->
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+    <h2 class="text-2xl font-semibold mb-6 text-center">{{ title }}</h2>
+
+    <form method="post" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Amount -->
+        <div class="space-y-2">
+            <label for="amount" class="block text-lg font-medium">Amount</label>
+            <input type="number" name="amount" id="amount" class="w-full border border-gray-300 p-3 rounded-md" placeholder="Enter the amount" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-500 transition duration-200">
+            {{ title }}
+        </button>
+    </form>
+
+    <!-- History Button -->
+    <div class="mt-4 text-center">
+        <a href="{% url 'transaction_report' %}" class="w-full inline-block mt-3 bg-white text-blue-600 py-3 px-4 border border-blue-600 rounded-md hover:bg-blue-50 transition duration-200">
+            View Transaction History
+        </a>
+    </div>
+</div>
+{% endblock %}
