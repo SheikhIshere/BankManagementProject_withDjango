@@ -1,19 +1,35 @@
 <!-- transaction_form.html -->
 {% extends 'base.html' %}
 
-{% block title %} {{ title }} {% endblock %}
+{% block title %}
+    {{ title }}
+{% endblock %}
 
 {% block content %}
-<div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+<div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md mt-10 mb-40">
     <h2 class="text-2xl font-semibold mb-6 text-center">{{ title }}</h2>
 
     <form method="post" class="space-y-6">
         {% csrf_token %}
 
+        <!-- Display form non-field errors -->
+        {% if form.non_field_errors %}
+            <div class="bg-red-100 border border-red-400 text-red-700 p-3 rounded">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
         <!-- Amount -->
         <div class="space-y-2">
             <label for="amount" class="block text-lg font-medium">Amount</label>
             <input type="number" name="amount" id="amount" class="w-full border border-gray-300 p-3 rounded-md" placeholder="Enter the amount" required>
+
+            <!-- Field-specific errors -->
+            {% if form.amount.errors %}
+                <p class="text-red-600 text-sm">
+                    {{ form.amount.errors|striptags }}
+                </p>
+            {% endif %}
         </div>
 
         <!-- Submit Button -->

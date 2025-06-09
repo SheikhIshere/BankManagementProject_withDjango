@@ -1,5 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1>this is inside html page</h1>    
-{% endblock content %}
+<div class="min-h-screen flex flex-col items-center justify-center text-center px-4 py-12 sm:py-20">
+  <!-- Bank Logo -->
+  <div class="mb-8 transform hover:scale-105 transition-transform duration-300">
+    <img src="{% static 'img/mamar_bank.png' %}" alt="Mamar Bank Logo" class="w-64 md:w-80 rounded-lg shadow-xl">
+  </div>
+
+  <!-- Welcome Heading -->
+  <div class="max-w-3xl space-y-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Welcome to <span class="text-blue-600">Mamar Bank</span></h1>
+    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+      Your trusted partner in secure, smart, and simple banking solutions. Experience financial services designed to help you grow and protect your wealth.
+    </p>
+  </div>
+
+  <!-- CTA Buttons -->
+  <div class="mt-12 flex flex-col sm:flex-row gap-4">
+    <a href="{% url 'loan_list' %}" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+      Explore Loan Products
+      <i class="fas fa-arrow-right ml-2"></i>
+    </a>
+    <a href="{% url 'transaction_report' %}" class="bg-white border-2 border-blue-600 text-blue-700 hover:bg-blue-50 px-8 py-3 rounded-md text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+      View Transactions
+      <i class="fas fa-file-invoice ml-2"></i>
+    </a>
+  </div>
+
+  <!-- Features Grid -->
+  <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div class="text-blue-600 mb-4 text-3xl">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Secure Banking</h3>
+      <p class="text-gray-600">Advanced encryption and multi-factor authentication to protect your assets.</p>
+    </div>
+    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div class="text-blue-600 mb-4 text-3xl">
+        <i class="fas fa-percentage"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">Competitive Rates</h3>
+      <p class="text-gray-600">Enjoy industry-leading interest rates on savings and loans.</p>
+    </div>
+    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div class="text-blue-600 mb-4 text-3xl">
+        <i class="fas fa-headset"></i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+      <p class="text-gray-600">Our customer service team is always ready to assist you.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

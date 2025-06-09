@@ -3,43 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% endblock title %}</title>
+    <title>{% block title %}Mamar Bank{% endblock title %}</title>
     <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  integrity="sha512-bbPfbR8jWjqHTiXGLPfd97Qlqt+S0B5CN+yuhcoh7j7AGwUOYjmnMpGBjMzby/cPO5L8KZaHB+2kLLgXLzFjqg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <main>
-      {% include 'navbar.html' %} {% block content %} {% if messages %}
-      <div id="message-box" class="max-w-xl mx-auto mt-4 px-4">
-        {% for message in messages %}
-        <div
-          class="flex items-center justify-between p-4 mb-2 rounded-md text-white {% if message.tags == 'success' %} bg-green-500 {% elif message.tags == 'error' or message.tags == 'danger' %} bg-red-500 {% else %} bg-blue-500 {% endif %}"
-        >
-          <span>{{ message }}</span>
-          <button
-            onclick="this.parentElement.remove()"
-            class="ml-4 font-bold text-lg hover:text-gray-200"
-          >
-            &times;
-          </button>
-        </div>
-        {% endfor %}
-      </div>
+  <body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+    <!-- Notification System -->
+    {% include 'messege.html' %}
 
-      <script>
-        setTimeout(() => {
-          const msg = document.getElementById("message-box");
-          if (msg) msg.remove();
-        }, 2000);
-      </script>
-      {% endif %} {% endblock content %}
-    </main>
+    <!-- NAVBAR -->
+    {% include 'navbar.html' %}
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">{% block content %} {% endblock content %}</main>
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
   </body>
 </html>
