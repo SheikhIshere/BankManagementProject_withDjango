@@ -19,7 +19,7 @@ env = environ.Env()
 env.read_env()
 
 
-PORT = os.getenv('PORT', '8000')  # Not mandatory, but a good practice
+
 
 
 SECRET_KEY = env('SECRET_KEY')
@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'mamar_bank.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://mamarbank_kt38_user:GJJGgoT6NEzZxlYB3qjXMMT8iFah7mwl@dpg-d15dnl7diees73fudf80-a.oregon-postgres.render.com/mamarbank_kt38'
+        default='postgresql://mamarbank_kvsf_user:fyEkrok0NqX7uvZxmO7m3Lvegt3W2bPM@dpg-d15eummuk2gs73c55930-a.oregon-postgres.render.com/mamarbank_kvsf'
         
     )
 }
