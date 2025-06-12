@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deposit Confirmation - Mamar Bank</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yw4FHQG6BvcdEJbXPbdM9QQFqk1Vd9N1Z7v2PvOv2lqz6fFwqIcTV63SRTz3lZhCLYAt4oGzzM7GHkW9XKwhfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background-color: #f0f6ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .header i {
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+    .header h1 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+    .content {
+      padding: 30px;
+      color: #333;
+    }
+    .content p {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    .content strong {
+      color: #1e3a8a;
+    }
+    .footer {
+      background-color: #f1f5f9;
+      padding: 20px 30px;
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <i class="fas fa-university"></i>
+      <h1>Mamar Bank</h1>
+    </div>
+
+    <div class="content">
+      <p>Dear <strong>{{ user.first_name }} {{ user.last_name }}</strong>,</p>
+
+      <p>We are pleased to inform you that a deposit of <strong>{{ amount }}</strong> has been successfully added to your account.</p>
+
+      <p>Your updated balance is now <strong>{{ user.account.balance }}</strong>.</p>
+
+      <p>If you have any questions or need further assistance, feel free to contact our support team.</p>
+    </div>
+
+    <div class="footer">
+      Thank you for banking with us.<br />
+      <strong>The Mamar Bank Team</strong>
+    </div>
+  </div>
+</body>
+</html>
