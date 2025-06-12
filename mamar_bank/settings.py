@@ -18,6 +18,10 @@ import environ
 env = environ.Env()
 env.read_env()
 
+
+PORT = os.getenv('PORT', '8000')  # Not mandatory, but a good practice
+
+
 SECRET_KEY = env('SECRET_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,7 +37,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['bankmanagementproject-withdjango.onrender.com', 'localhost', '127.0.0.1']
 
 
 
@@ -149,8 +153,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / "static",
 ]
+
 
 
 # Base directory (usually already present)
