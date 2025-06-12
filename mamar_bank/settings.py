@@ -39,6 +39,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['bankmanagementproject-withdjango.onrender.com', 'localhost', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ["https://bankmanagementproject-withdjango.onrender.com",]
 
 
 # Application definition
