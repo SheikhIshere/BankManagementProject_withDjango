@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'mamar_bank.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://mamarbank_kvsf_user:fyEkrok0NqX7uvZxmO7m3Lvegt3W2bPM@dpg-d15eummuk2gs73c55930-a.oregon-postgres.render.com/mamarbank_kvsf'
+        default='postgresql://mamarbank_database_postgres_user:23ida7Cq7B9gN4Qc4cwUBAAp74fbAobG@dpg-d15f1ap5pdvs73f8afqg-a.oregon-postgres.render.com/mamarbank_database_postgres'
         
     )
 }
