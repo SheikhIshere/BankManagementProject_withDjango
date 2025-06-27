@@ -19,6 +19,9 @@ env = environ.Env()
 env.read_env()
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://bankmanagementproject-withdjango.onrender.com',
+]
 
 
 
